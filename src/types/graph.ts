@@ -1,4 +1,4 @@
-// Graph ADT and Algorithm Types for Unit IV
+// Graph ADT and Algorithm Types for Network Topology
 
 export type GraphEdgeType = 'tree' | 'back' | 'forward' | 'cross';
 

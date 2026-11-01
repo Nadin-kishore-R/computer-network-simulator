@@ -8,7 +8,7 @@ import { Kruskal } from '../algorithms/kruskal';
 import { ConnectedComponents } from '../algorithms/components';
 import { TopologicalSort } from '../algorithms/topologicalSort';
 
-describe('Unit IV — Graphs: Graph ADT', () => {
+describe('Network Topology: Graph Model', () => {
   let g: Graph;
 
   beforeEach(() => {
@@ -51,7 +51,7 @@ describe('Unit IV — Graphs: Graph ADT', () => {
   });
 });
 
-describe('Unit IV — Graphs: Breadth-First Search (BFS)', () => {
+describe('Routing Traversal: Breadth-First Search (BFS)', () => {
   it('should calculate correct hop-distances and traversal order', () => {
     const g = new Graph(false, true);
     ['A', 'B', 'C', 'D'].forEach((id) => g.addVertex({ id, label: id }));
@@ -78,7 +78,7 @@ describe('Unit IV — Graphs: Breadth-First Search (BFS)', () => {
   });
 });
 
-describe('Unit IV — Graphs: Depth-First Search (DFS)', () => {
+describe('Network Exploration: Depth-First Search (DFS)', () => {
   it('should execute recursive DFS and compute timestamps', () => {
     const g = new Graph(true, true);
     ['A', 'B', 'C'].forEach((id) => g.addVertex({ id, label: id }));
@@ -116,7 +116,7 @@ describe('Unit IV — Graphs: Depth-First Search (DFS)', () => {
   });
 });
 
-describe('Unit IV — Graphs: Dijkstra Shortest Path', () => {
+describe('Shortest Path Routing: Dijkstra Algorithm', () => {
   it('should calculate shortest paths accurately', () => {
     const g = new Graph(false, true);
     ['A', 'B', 'C', 'D'].forEach((id) => g.addVertex({ id, label: id }));
@@ -160,7 +160,7 @@ describe('Unit IV — Graphs: Dijkstra Shortest Path', () => {
   });
 });
 
-describe('Unit IV — Graphs: Minimum Spanning Tree (Prim & Kruskal)', () => {
+describe('Cabling Optimization: Minimum Spanning Tree (Prim & Kruskal)', () => {
   it('should produce identical MST total weight for Prim and Kruskal', () => {
     const g = new Graph(false, true);
     ['A', 'B', 'C', 'D', 'E'].forEach((id) => g.addVertex({ id, label: id }));
@@ -183,7 +183,7 @@ describe('Unit IV — Graphs: Minimum Spanning Tree (Prim & Kruskal)', () => {
   });
 });
 
-describe('Unit IV — Graphs: Connected Components & SCC', () => {
+describe('Network Partitioning: Connected Components & SCC', () => {
   it('should identify undirected connected components', () => {
     const g = new Graph(false, true);
     ['A', 'B', 'C', 'X', 'Y'].forEach((id) => g.addVertex({ id, label: id }));
@@ -213,7 +213,7 @@ describe('Unit IV — Graphs: Connected Components & SCC', () => {
   });
 });
 
-describe('Unit IV — Graphs: Topological Sorting & Cycle Detection', () => {
+describe('Service Dependency Pipeline: Topological Sorting & Cycle Detection', () => {
   it('should sort DAG with Kahn and DFS and verify edge ordering', () => {
     const dag = Graph.createSampleDAG();
 

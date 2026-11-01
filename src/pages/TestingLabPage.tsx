@@ -1,10 +1,10 @@
 import React from 'react';
-import { CheckCircle2, ShieldCheck, Terminal, Layers, FileCode } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, Terminal, FileCode } from 'lucide-react';
 
 export const TestingLabPage: React.FC = () => {
   const testCategories = [
     {
-      suite: 'Unit III — Trees (src/tests/trees.test.ts)',
+      suite: 'Hierarchy & Directory Modules (src/tests/trees.test.ts)',
       count: 22,
       duration: '426 ms',
       cases: [
@@ -25,7 +25,7 @@ export const TestingLabPage: React.FC = () => {
         'AVL Tree: Perform RR rotation (Left Rotation)',
         'AVL Tree: Perform LR rotation (Left-Right Double Rotation)',
         'AVL Tree: Perform RL rotation (Right-Left Double Rotation)',
-        'AVL Tree: Maintain balance and BST property after deletions',
+        'AVL Tree: Maintain balance and ordering property after deletions',
         'Expression Tree: Build from postfix and generate Inorder, Preorder, Postorder',
         'Expression Tree: Evaluate postfix calculation with step tracking',
         'Expression Tree: Safe exception on division by zero',
@@ -33,7 +33,7 @@ export const TestingLabPage: React.FC = () => {
       ],
     },
     {
-      suite: 'Unit IV — Graphs (src/tests/graphs.test.ts)',
+      suite: 'Topology & Routing Modules (src/tests/graphs.test.ts)',
       count: 17,
       duration: '39 ms',
       cases: [
@@ -57,7 +57,7 @@ export const TestingLabPage: React.FC = () => {
       ],
     },
     {
-      suite: 'Unit V — Algorithm Analysis (src/tests/analysis.test.ts)',
+      suite: 'Performance & Benchmarking Modules (src/tests/analysis.test.ts)',
       count: 9,
       duration: '77 ms',
       cases: [
@@ -85,28 +85,28 @@ export const TestingLabPage: React.FC = () => {
   return (
     <div className="space-y-8 p-6 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="border-b border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono">
-            <ShieldCheck className="w-4 h-4" />
-            <span>QUALITY ASSURANCE</span>
+          <div className="flex items-center gap-2 text-emerald-700 text-xs font-semibold uppercase tracking-wider">
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <span>Quality Assurance & Verification</span>
           </div>
-          <h1 className="text-2xl font-bold text-white mt-1">Automated Test Suite & Verification Report</h1>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <h1 className="text-2xl font-bold text-slate-900 mt-1">Automated Test Suite & Verification Report</h1>
+          <p className="text-xs text-slate-500 mt-0.5">
             Full automated verification matrix covering unit tests, edge cases, cycle detection, and asymptotic properties.
           </p>
         </div>
 
         <div className="flex items-center gap-3 font-mono text-xs">
-          <div className="px-3 py-1.5 rounded-lg bg-emerald-950/80 border border-emerald-800 text-emerald-300 font-bold flex items-center gap-1.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+          <div className="px-3.5 py-2 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold flex items-center gap-1.5 shadow-xs">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             <span>{totalTests} / {totalTests} Passed (100%)</span>
           </div>
         </div>
       </div>
 
       {/* Terminal Command Callout */}
-      <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs space-y-2">
+      <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs space-y-2 text-white shadow-xs">
         <div className="flex items-center justify-between text-slate-400 text-[11px]">
           <span className="flex items-center gap-1.5 text-cyan-400 font-bold">
             <Terminal className="w-3.5 h-3.5" />
@@ -114,7 +114,7 @@ export const TestingLabPage: React.FC = () => {
           </span>
           <span className="text-emerald-400 font-bold">Test Files 4 passed (4) | 49 passed</span>
         </div>
-        <div className="p-2.5 rounded bg-slate-900 border border-slate-800/80 text-emerald-300">
+        <div className="p-2.5 rounded bg-slate-950 border border-slate-800 text-emerald-400">
           $ npm run test
         </div>
       </div>
@@ -122,15 +122,15 @@ export const TestingLabPage: React.FC = () => {
       {/* Test Suites List */}
       <div className="space-y-6">
         {testCategories.map((cat, idx) => (
-          <div key={idx} className="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-4 shadow-lg">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div key={idx} className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <div className="flex items-center gap-2.5">
-                <FileCode className="w-4 h-4 text-cyan-400" />
-                <h2 className="text-sm font-bold text-white font-mono">{cat.suite}</h2>
+                <FileCode className="w-4 h-4 text-cyan-700" />
+                <h2 className="text-sm font-bold text-slate-900 font-mono">{cat.suite}</h2>
               </div>
               <div className="flex items-center gap-3 text-xs font-mono">
                 <span className="text-slate-500">Duration: {cat.duration}</span>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 font-bold">
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">
                   {cat.count} Passed
                 </span>
               </div>
@@ -140,10 +140,10 @@ export const TestingLabPage: React.FC = () => {
               {cat.cases.map((c, cIdx) => (
                 <div
                   key={cIdx}
-                  className="p-2 rounded bg-slate-950 border border-slate-800/60 flex items-start gap-2 hover:border-slate-700 transition-colors"
+                  className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-start gap-2 hover:bg-slate-100/70 transition-colors"
                 >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span className="text-slate-300 text-[11px] font-sans">{c}</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span className="text-slate-700 text-[11px] font-sans">{c}</span>
                 </div>
               ))}
             </div>

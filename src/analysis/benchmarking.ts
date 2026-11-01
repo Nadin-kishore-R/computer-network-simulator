@@ -50,7 +50,7 @@ export class SeededRandom {
 
 export class BenchmarkRunner {
   /**
-   * Run benchmark on Tree Data Structures (BST vs AVL)
+   * Run benchmark on Hierarchical Directories (BST vs AVL)
    */
   public static benchmarkTrees(size: number, seed = 42): BenchmarkResult[] {
     const rng = new SeededRandom(seed);

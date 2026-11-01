@@ -19,12 +19,12 @@ interface GraphVisualizerProps {
 }
 
 const COMPONENT_PALETTES = [
-  { fill: '#1e293b', stroke: '#38bdf8', text: '#38bdf8' },
-  { fill: '#1e1b4b', stroke: '#818cf8', text: '#a5b4fc' },
-  { fill: '#14532d', stroke: '#4ade80', text: '#86efac' },
-  { fill: '#701a75', stroke: '#f472b6', text: '#fbcfe8' },
-  { fill: '#78350f', stroke: '#fbbf24', text: '#fde68a' },
-  { fill: '#7f1d1d', stroke: '#f87171', text: '#fca5a5' },
+  { fill: '#e0f2fe', stroke: '#0284c7', text: '#0369a1' },
+  { fill: '#ede9fe', stroke: '#7c3aed', text: '#6d28d9' },
+  { fill: '#dcfce7', stroke: '#16a34a', text: '#15803d' },
+  { fill: '#fce7f3', stroke: '#db2777', text: '#be185d' },
+  { fill: '#fef3c7', stroke: '#d97706', text: '#b45309' },
+  { fill: '#fee2e2', stroke: '#dc2626', text: '#b91c1c' },
 ];
 
 export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
@@ -118,29 +118,29 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
   const getDeviceIcon = (type?: string) => {
     switch (type) {
       case 'router':
-        return <Router className="w-3.5 h-3.5 text-blue-400" />;
+        return <Router className="w-3.5 h-3.5 text-blue-600" />;
       case 'server':
-        return <Server className="w-3.5 h-3.5 text-emerald-400" />;
+        return <Server className="w-3.5 h-3.5 text-emerald-600" />;
       case 'firewall':
-        return <Shield className="w-3.5 h-3.5 text-red-400" />;
+        return <Shield className="w-3.5 h-3.5 text-red-600" />;
       case 'workstation':
-        return <Laptop className="w-3.5 h-3.5 text-amber-400" />;
+        return <Laptop className="w-3.5 h-3.5 text-amber-600" />;
       default:
-        return <Network className="w-3.5 h-3.5 text-cyan-400" />;
+        return <Network className="w-3.5 h-3.5 text-cyan-700" />;
     }
   };
 
   return (
-    <div className="relative w-full overflow-hidden border border-slate-800 rounded-xl bg-slate-950/80 p-2 shadow-2xl select-none">
-      <div className="flex items-center justify-between px-3 py-1 text-xs text-slate-400 border-b border-slate-800/80 mb-2">
+    <div className="relative w-full overflow-hidden border border-slate-200 rounded-xl bg-white p-3 shadow-xs select-none">
+      <div className="flex items-center justify-between px-3 py-1.5 text-xs text-slate-600 border-b border-slate-200 mb-2">
         <div className="flex items-center gap-4">
-          <span className="font-semibold text-slate-200">Network Topology Canvas</span>
-          <span className="text-slate-500">|</span>
-          <span className="text-slate-400">Click node to set Source / Target. Drag nodes to reposition.</span>
+          <span className="font-semibold text-slate-800">Network Topology Canvas</span>
+          <span className="text-slate-300">|</span>
+          <span className="text-slate-500">Click node to set Source / Target. Drag nodes to reposition.</span>
         </div>
         <div className="flex items-center gap-3 font-mono text-[11px]">
-          <span className="text-cyan-400 font-medium">{vertices.length} Nodes</span>
-          <span className="text-blue-400 font-medium">{edges.length} Links</span>
+          <span className="text-cyan-700 font-semibold">{vertices.length} Nodes</span>
+          <span className="text-blue-700 font-semibold">{edges.length} Links</span>
         </div>
       </div>
 
@@ -148,7 +148,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
         width="100%"
         height={height}
         viewBox="0 0 950 540"
-        className="w-full h-auto cursor-default"
+        className="w-full h-auto cursor-default bg-slate-50/50 rounded-lg"
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
       >
@@ -163,7 +163,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
             markerHeight="6"
             orient="auto-start-reverse"
           >
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8" />
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
           </marker>
 
           {/* Highlighted Arrow */}
@@ -176,7 +176,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
             markerHeight="7"
             orient="auto-start-reverse"
           >
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#06b6d4" />
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0284c7" />
           </marker>
 
           {/* Glow filter */}
@@ -196,18 +196,18 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
           const inMST = isEdgeInMST(edge);
           const rejected = isEdgeRejected(edge);
 
-          let strokeColor = '#334155';
-          let strokeWidth = 1.8;
+          let strokeColor = '#94a3b8';
+          let strokeWidth = 2;
           let strokeDasharray = undefined;
 
           if (inPath) {
-            strokeColor = '#06b6d4'; // Luminous Cyan
+            strokeColor = '#0284c7'; // Vibrant Cyan / Blue
             strokeWidth = 4.5;
           } else if (inMST) {
-            strokeColor = '#22c55e'; // Green
+            strokeColor = '#16a34a'; // Emerald Green
             strokeWidth = 3.5;
           } else if (rejected) {
-            strokeColor = '#ef4444'; // Red dashed
+            strokeColor = '#dc2626'; // Red dashed
             strokeWidth = 2;
             strokeDasharray = '4,4';
           }
@@ -237,14 +237,14 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                   width="32"
                   height="18"
                   rx="4"
-                  fill="#0b1329"
-                  stroke={inPath ? '#06b6d4' : inMST ? '#22c55e' : '#1e293b'}
+                  fill="#ffffff"
+                  stroke={inPath ? '#0284c7' : inMST ? '#16a34a' : '#cbd5e1'}
                   strokeWidth="1.2"
                 />
                 <text
                   textAnchor="middle"
                   dy="3.5"
-                  fill={inPath ? '#38bdf8' : inMST ? '#4ade80' : '#94a3b8'}
+                  fill={inPath ? '#0284c7' : inMST ? '#16a34a' : '#475569'}
                   fontSize="10"
                   fontWeight="bold"
                   className="font-mono pointer-events-none"
@@ -268,18 +268,18 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
           const compId = vertexComponentMap ? vertexComponentMap[v.id] : undefined;
           const palette = compId !== undefined ? COMPONENT_PALETTES[(compId - 1) % COMPONENT_PALETTES.length] : null;
 
-          let strokeColor = palette ? palette.stroke : '#38bdf8';
-          let fillColor = palette ? palette.fill : '#0f172a';
+          let strokeColor = palette ? palette.stroke : '#0284c7';
+          let fillColor = palette ? palette.fill : '#ffffff';
 
           if (isSelected) {
-            strokeColor = '#38bdf8';
-            fillColor = '#0369a1';
+            strokeColor = '#0284c7';
+            fillColor = '#e0f2fe';
           } else if (isTarget) {
-            strokeColor = '#10b981';
-            fillColor = '#065f46';
+            strokeColor = '#16a34a';
+            fillColor = '#dcfce7';
           } else if (isHighlighted) {
-            strokeColor = '#f59e0b';
-            fillColor = '#78350f';
+            strokeColor = '#d97706';
+            fillColor = '#fef3c7';
           }
 
           const metric = vertexMetricMap ? vertexMetricMap[v.id] : undefined;
@@ -299,7 +299,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                   fill="none"
                   stroke={strokeColor}
                   strokeWidth="2.5"
-                  opacity="0.5"
+                  opacity="0.4"
                   filter="url(#luminousGlow)"
                 />
               )}
@@ -310,7 +310,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                 fill={fillColor}
                 stroke={strokeColor}
                 strokeWidth={isSelected || isTarget ? '3' : '2'}
-                className="transition-colors shadow-lg"
+                className="transition-colors shadow-sm"
               />
 
               {/* Device Type Mini Badge */}
@@ -322,9 +322,9 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
               <text
                 textAnchor="middle"
                 y="34"
-                fill="#f1f5f9"
+                fill="#0f172a"
                 fontSize="11"
-                fontWeight="600"
+                fontWeight="700"
                 className="pointer-events-none font-mono"
               >
                 {v.label.length > 12 ? v.label.slice(0, 11) + '…' : v.label}
@@ -340,7 +340,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                     height="16"
                     rx="3"
                     fill="#0284c7"
-                    stroke="#38bdf8"
+                    stroke="#0369a1"
                     strokeWidth="1"
                   />
                   <text
@@ -360,6 +360,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                   y="46"
                   fill="#64748b"
                   fontSize="9"
+                  fontWeight="500"
                   className="pointer-events-none font-mono"
                 >
                   {v.ip}

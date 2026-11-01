@@ -99,7 +99,7 @@ export const NetworkProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setAvl(AVLTree.createDefaultRegistry());
     setGraph(Graph.createSampleNetwork());
     triggerUpdate();
-    logOperation('System', 'Topology Reset', 'Restored all data structures and graphs to baseline sample datasets.');
+    logOperation('System', 'Topology Reset', 'Restored all network topologies and registries to baseline sample datasets.');
   };
 
   const value = useMemo(

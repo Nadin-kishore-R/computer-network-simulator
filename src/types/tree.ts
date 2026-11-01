@@ -1,4 +1,4 @@
-// Tree types and data models for Unit III
+// Tree types and models for network hierarchies
 
 export type NetworkDeviceType = 'router' | 'switch' | 'server' | 'firewall' | 'workstation' | 'subnet' | 'gateway';
 

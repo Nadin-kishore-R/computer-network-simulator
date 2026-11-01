@@ -1,4 +1,4 @@
-# Computer Network Simulator (NetSim DSA)
+# Computer Network Simulator (NetSIM)
 
 [![Live Web Application](https://img.shields.io/badge/Live_Website-Firebase_Hosting-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://computer-network-simulator.web.app)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Nadin-kishore-R/computer-network-simulator.git)
@@ -7,20 +7,20 @@
 [![React](https://img.shields.io/badge/React-19.3-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-> **An advanced, interactive Computer Network Simulator demonstrating Data Structures and Algorithms** (General Trees, Binary Search Trees, Self-Balancing AVL Trees, Expression Trees, Graph ADTs, Breadth-First & Depth-First Search, Dijkstra Shortest Path, Minimum Spanning Trees via Prim & Kruskal, Disjoint Set Union, Strongly Connected Components, and Asymptotic Complexity Benchmarking).
+> **NetSIM: An advanced, interactive Computer Network Simulation Platform** featuring complete algorithmic implementations for network hierarchies, device directories, self-balancing registries, bandwidth calculators, graph topologies, breadth-first & depth-first traversals, Dijkstra routing, minimum spanning trees via Prim & Kruskal, strongly connected components, and empirical benchmarking. Designed with a clean, high-contrast bright silvery white theme.
 
 ---
 
 ## 📌 Project Overview
-The **Computer Network Simulator (NetSim DSA)** bridges abstract Data Structures and Algorithms theory with tangible computer networking architecture. Rather than relying on third-party black-box algorithmic libraries, all data structures, traversal mechanics, and optimization algorithms are implemented from scratch in pure TypeScript.
+The **Computer Network Simulator (NetSIM)** models enterprise computer networking architectures through interactive algorithms. Rather than relying on third-party black-box libraries, all algorithmic models, traversal mechanics, and optimization protocols are implemented from scratch in pure TypeScript.
 
 The simulator models:
-* **Network Hierarchies** using multi-way General Trees.
-* **IP and Hardware Registries** using BSTs and self-balancing AVL Trees.
-* **Bandwidth and Queue Sizing Calculations** using Postfix Expression Trees.
+* **Network Hierarchies** using multi-way hierarchical trees.
+* **IP and Hardware Registries** using binary search directories and self-balancing AVL trees.
+* **Bandwidth and Buffer Sizing Calculations** using Postfix Expression Trees.
 * **Subnet Topologies** using a Graph ADT supporting Adjacency Matrices and Adjacency Lists.
 * **Minimum-Hop vs. Minimum-Latency Routing** comparing unweighted BFS and greedy Dijkstra.
-* **Physical Cabling Optimization** through Prim's cut-property and Kruskal's cycle-avoiding DSU.
+* **Physical Cabling Optimization** through Prim's cut-property and Kruskal's cycle-avoiding partition sets.
 * **Service Dependency Scheduling** using Kahn's algorithm and DFS topological sort with circular deadlock detection.
 * **Empirical Latency Benchmarking** measuring actual runtime via browser high-resolution timers (`performance.now()`).
 
@@ -30,56 +30,56 @@ The simulator models:
 
 ### 1. Mission Operations Dashboard
 ![Mission Dashboard](screenshots/dashboard.png)
-*Real-time enterprise network overview featuring KPI counters, live topology visualizer, and event audit trail.*
+*Real-time enterprise network overview featuring KPI counters, live topology visualizer, and event audit trail in bright theme.*
 
 ---
 
-### 2. Network Hierarchy — General Tree Management
+### 2. Network Hierarchy Management
 ![Network Hierarchy](screenshots/network_hierarchy.png)
 *Interactive multi-way tree representing routers, subnets, switches, and hosts with height, depth, and traversal metrics.*
 
 ---
 
-### 3. Self-Balancing IP Registry — AVL Tree & Rotations
+### 3. Self-Balancing IP Registry — Rotations & Rebalancing
 ![AVL Tree Rotations](screenshots/avl_tree.png)
-*Dynamic AVL Tree displaying live Balance Factors ($|BF| \le 1$), automated LL, RR, LR, and RL rotations, and step-by-step rebalancing history.*
+*Dynamic balanced directory displaying live Balance Factors ($|BF| \le 1$), automated LL, RR, LR, and RL rotations, and step-by-step rebalancing history.*
 
 ---
 
-### 4. Bandwidth Calculator — Postfix Expression Tree
+### 4. Bandwidth Calculator — Expression Engine
 ![Bandwidth Calculator](screenshots/bandwidth_calculator.png)
-*Interactive Expression Tree synthesis from Reverse Polish Notation, evaluating networking throughput and delay-bandwidth products.*
+*Interactive Expression model synthesis from Reverse Polish Notation, evaluating networking throughput and delay-bandwidth products.*
 
 ---
 
 ### 5. Cabling Optimization — Prim & Kruskal Minimum Spanning Tree
 ![Cabling Optimization](screenshots/cabling_mst.png)
-*Loop-free physical cabling optimization: Green solid lines represent selected minimum cabling; red dashed lines represent rejected cycle-forming links detected by Disjoint Set Union (DSU).*
+*Loop-free physical cabling optimization: Green solid lines represent selected minimum cabling; red dashed lines represent rejected cycle-forming links.*
 
 ---
 
-## 🚀 Key Modules & Curriculum Mapping
+## 🚀 Key Modules & Architecture
 
-### 🌲 Unit III — Trees
-* **Network Hierarchy (General Tree)**:
+### 🌲 Hierarchy & Directory Architecture
+* **Network Hierarchy**:
   * Operations: Root initialization, child insertion, subtree pruning, searching by ID, parent/child inspection.
-  * Metrics: Tree height, node depth, total node counting.
+  * Metrics: Hierarchy height, node depth, total node counting.
   * Traversals: Preorder, Postorder, Level-order (BFS queue).
-* **Device Registry (Binary Search Tree)**:
+* **Device Registry**:
   * Operations: Keyed insertion, search path tracking, deletion (Leaf, Single Child, Two Children with in-order successor).
   * Queries: Minimum, Maximum, Inorder Successor, Inorder Predecessor, and Range Queries `[minKey, maxKey]`.
   * Duplicate Policy: Strict unique keys enforced to preserve bijection with physical hardware MAC/IP addresses.
-* **Balanced IP Registry (AVL Tree)**:
+* **Balanced IP Registry**:
   * Self-balancing mechanism: Balance Factor $BF = h_{left} - h_{right} \in \{-1, 0, 1\}$.
   * Automatic Rotations: Single Right (LL), Single Left (RR), Left-Right (LR), and Right-Left (RL).
-  * Real-time verification: BST ordering invariant and AVL balance property checked on every mutation.
-* **Bandwidth Calculator (Expression Tree)**:
+  * Real-time verification: Ordering invariant and balance property checked on every mutation.
+* **Bandwidth Calculator**:
   * Postfix parser: Operator validation (`+`, `-`, `*`, `/`, `^`, `%`) and operand numerical validation.
   * Synthesizer: Constructs binary expression trees with Inorder, Preorder, and Postorder outputs.
   * Step-by-step evaluator: Step table showing intermediate stack states and safe zero-division handling.
 
-### 🌐 Unit IV — Graphs
-* **Network Graph ADT**:
+### 🌐 Topology & Routing Architecture
+* **Network Topology Graph**:
   * Directed, Undirected, Weighted, and Unweighted graph modes.
   * Dual representations: Adjacency Matrix and Adjacency List.
   * Dynamic operations: Vertex addition/deletion, edge addition/deletion, edge weight updates.
@@ -105,13 +105,13 @@ The simulator models:
   * Kahn's Algorithm (in-degree BFS) and DFS reverse postorder.
   * Cycle Deadlock Detection: Immediately flags cyclic dependencies and verifies directed edge constraints.
 
-### 🔬 Unit V — Algorithm Performance Laboratory
+### 🔬 Performance & Benchmarking Analysis
 * **Comparative Studies**:
   * BFS vs. Dijkstra: Features a concrete divergent topology where the minimum-hop route (100ms) differs from the minimum-latency route (30ms).
   * Prim vs. Kruskal: Dense vs. sparse graph efficiencies and DSU mechanics.
-  * BST vs. AVL: Degenerate $O(n)$ linear skew vs. guaranteed $O(\log n)$ balance bound.
+  * Standard vs. Balanced Directories: Degenerate $O(n)$ linear skew vs. guaranteed $O(\log n)$ balance bound.
 * **Empirical Benchmarking Laboratory**:
-  * Real-world timing execution using `performance.now()` across tree sizes (1k, 5k, 20k) and graph vertices (200, 1k, 2k).
+  * Real-world timing execution using `performance.now()` across hierarchy sizes (1k, 5k, 20k) and graph vertices (200, 1k, 2k).
   * Reproducible experiments using a deterministic Linear Congruential PRNG (`SeededRandom`).
   * Live comparison charts rendered with Recharts.
 * **Complexity Theory Matrix**:
@@ -123,12 +123,12 @@ The simulator models:
 
 ## 📊 Theoretical Complexity Reference Matrix
 
-| Data Structure / Algorithm | Best Case Time | Average Case Time | Worst Case Time | Space Complexity |
+| Protocol / Algorithm | Best Case Time | Average Case Time | Worst Case Time | Space Complexity |
 | :--- | :--- | :--- | :--- | :--- |
 | **General Tree (Hierarchy)** | $O(1)$ | $O(n)$ | $O(n)$ | $O(n)$ |
-| **Binary Search Tree (BST)** | $O(1)$ | $O(\log n)$ | $O(n)$ (Skewed) | $O(n)$ |
-| **AVL Tree (Self-Balancing)** | $O(1)$ | $O(\log n)$ | $O(\log n)$ (Guaranteed) | $O(n)$ |
-| **Expression Tree** | $O(m)$ | $O(m)$ | $O(m)$ | $O(m)$ |
+| **Device Registry (BST)** | $O(1)$ | $O(\log n)$ | $O(n)$ (Skewed) | $O(n)$ |
+| **Balanced IP Registry (AVL)** | $O(1)$ | $O(\log n)$ | $O(\log n)$ (Guaranteed) | $O(n)$ |
+| **Expression Tree Engine** | $O(m)$ | $O(m)$ | $O(m)$ | $O(m)$ |
 | **Breadth-First Search (BFS)** | $O(V + E)$ | $O(V + E)$ | $O(V + E)$ | $O(V)$ |
 | **Depth-First Search (DFS)** | $O(V + E)$ | $O(V + E)$ | $O(V + E)$ | $O(V)$ |
 | **Dijkstra (Binary Min-Heap)** | $O((V + E) \log V)$ | $O((V + E) \log V)$ | $O((V + E) \log V)$ | $O(V)$ |
@@ -145,7 +145,7 @@ The simulator models:
 computer-network-simulator/
 ├── public/                 # Static web assets & icons
 ├── src/
-│   ├── algorithms/         # Academic Graph & Network Routing Algorithms
+│   ├── algorithms/         # Routing & Graph Algorithms
 │   │   ├── bfs.ts          # Breadth-First Search
 │   │   ├── dfs.ts          # Depth-First Search (Recursive & Iterative)
 │   │   ├── dijkstra.ts     # Dijkstra Shortest Path with Min-Heap
@@ -155,12 +155,12 @@ computer-network-simulator/
 │   │   ├── prim.ts         # Prim Minimum Spanning Tree
 │   │   ├── components.ts   # Connected Components & Tarjan SCC
 │   │   └── topologicalSort.ts # Kahn & DFS Topological Ordering
-│   ├── analysis/           # Unit V Empirical & Theoretical Analysis
+│   ├── analysis/           # Empirical & Theoretical Analysis
 │   │   ├── comparisons.ts  # Comparative Analysis & Divergent Topologies
 │   │   ├── benchmarking.ts # Live timing benchmarks via performance.now()
 │   │   └── complexity.ts   # Asymptotic Complexity & Master Theorem Profiles
 │   ├── components/         # Interactive SVG Canvas & Layout UI
-│   │   ├── TreeVisualizer.tsx  # Dynamic Hierarchical Tree Canvas
+│   │   ├── TreeVisualizer.tsx  # Dynamic Hierarchical Canvas
 │   │   ├── GraphVisualizer.tsx # Network Topology Canvas with Drag & Markers
 │   │   ├── Header.tsx      # System Header with Live Badges
 │   │   └── Navigation.tsx  # Sidebar Module Navigator
@@ -176,7 +176,7 @@ computer-network-simulator/
 │   │   ├── tree.ts
 │   │   └── graph.ts
 │   ├── App.tsx             # Master App Router & State Layout
-│   ├── index.css           # Tailwind CSS Theme & Styling
+│   ├── index.css           # Bright Silvery White Theme & Tailwind CSS
 │   └── main.tsx            # Entry Point
 ├── screenshots/            # Genuine Captured Application Screenshots
 ├── firebase.json           # Firebase Hosting SPA Configuration
@@ -243,10 +243,10 @@ firebase deploy --only hosting --project computer-network-simulator
 
 ## 👥 Engineering Team
 * **Lead Architect & Developer**: **Nadin Kishore R**
-* **Institution / Course**: Data Structures and Algorithms Laboratory Project
+* **Project**: Computer Network Simulator (NetSIM)
 * **Contact**: [nadinkishore24@gmail.com](mailto:nadinkishore24@gmail.com)
 
 ---
 
 ## 📄 License & Acknowledgements
-This project is developed for academic demonstration and evaluation of fundamental Data Structures and Algorithms in computer network engineering. All algorithms are original implementations in TypeScript.
+This project is developed for interactive demonstration and simulation of network engineering algorithms and hierarchical routing protocols. All algorithms are original implementations in pure TypeScript.

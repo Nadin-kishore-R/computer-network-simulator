@@ -3,7 +3,7 @@ import { AlgorithmComparisons } from '../analysis/comparisons';
 import { BenchmarkRunner, SeededRandom } from '../analysis/benchmarking';
 import { ComplexityTheory } from '../analysis/complexity';
 
-describe('Unit V — Algorithm Analysis: Comparative Studies', () => {
+describe('Algorithm Comparative Studies', () => {
   it('should return complete comparison data for BFS vs Dijkstra', () => {
     const data = AlgorithmComparisons.getBFSvsDijkstra();
     expect(data.table.length).toBeGreaterThanOrEqual(6);
@@ -34,7 +34,7 @@ describe('Unit V — Algorithm Analysis: Comparative Studies', () => {
   });
 });
 
-describe('Unit V — Algorithm Analysis: Benchmarking Laboratory', () => {
+describe('Performance Benchmarking Laboratory', () => {
   it('should provide reproducible random sequences using SeededRandom', () => {
     const rng1 = new SeededRandom(12345);
     const seq1 = [rng1.nextInt(1, 100), rng1.nextInt(1, 100), rng1.nextInt(1, 100)];
@@ -66,7 +66,7 @@ describe('Unit V — Algorithm Analysis: Benchmarking Laboratory', () => {
   });
 });
 
-describe('Unit V — Algorithm Analysis: Complexity Theory', () => {
+describe('Asymptotic Complexity Theory', () => {
   it('should provide asymptotic notation definitions', () => {
     const notations = ComplexityTheory.getAsymptoticNotations();
     expect(notations.length).toBe(3);

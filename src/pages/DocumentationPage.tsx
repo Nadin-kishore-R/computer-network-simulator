@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, CheckCircle2, Globe, Server, Layers, Cpu, Code2 } from 'lucide-react';
+import { BookOpen, CheckCircle2, Globe, Code2 } from 'lucide-react';
 
 const GitHubIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -15,116 +15,116 @@ export const DocumentationPage: React.FC = () => {
   return (
     <div className="space-y-8 p-6 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="border-b border-slate-800 pb-4">
-        <div className="flex items-center gap-2 text-cyan-400 text-xs font-mono">
-          <BookOpen className="w-4 h-4" />
-          <span>PROJECT ARCHITECTURE & DOCUMENTATION</span>
+      <div className="border-b border-slate-200 pb-4">
+        <div className="flex items-center gap-2 text-cyan-700 text-xs font-semibold uppercase tracking-wider">
+          <BookOpen className="w-4 h-4 text-cyan-600" />
+          <span>Project Architecture & Manual</span>
         </div>
-        <h1 className="text-2xl font-bold text-white mt-1">Computer Network Simulator — Master Documentation</h1>
-        <p className="text-xs text-slate-400 mt-0.5">
-          Comprehensive academic technical manual documenting algorithmic implementations, data structure design, and verification reports.
+        <h1 className="text-2xl font-bold text-slate-900 mt-1">Computer Network Simulator — Master Documentation</h1>
+        <p className="text-xs text-slate-500 mt-0.5">
+          Comprehensive academic technical manual documenting algorithmic implementations, network architecture design, and verification reports.
         </p>
       </div>
 
       {/* Quick Links & Deployment Info */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <div className="flex items-center gap-2 text-xs font-semibold text-white">
-            <Globe className="w-4 h-4 text-cyan-400" />
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-2">
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-900">
+            <Globe className="w-4 h-4 text-cyan-600" />
             <span>Live Production Deployment (Firebase Hosting)</span>
           </div>
-          <p className="text-xs text-slate-400 font-mono break-all">
-            URL: <a href="https://computer-network-simulator.web.app" target="_blank" rel="noreferrer" className="text-cyan-400 underline">https://computer-network-simulator.web.app</a>
+          <p className="text-xs text-slate-600 font-mono break-all">
+            URL: <a href="https://computer-network-simulator.web.app" target="_blank" rel="noreferrer" className="text-cyan-700 underline font-semibold">https://computer-network-simulator.web.app</a>
           </p>
           <div className="text-[11px] text-slate-500 font-mono">
-            Firebase Project ID: <span className="text-slate-300">computer-network-simulator</span>
+            Firebase Project ID: <span className="text-slate-800 font-medium">computer-network-simulator</span>
           </div>
         </div>
 
-        <div className="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <div className="flex items-center gap-2 text-xs font-semibold text-white">
-            <GitHubIcon className="w-4 h-4 text-slate-300" />
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-2">
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-900">
+            <GitHubIcon className="w-4 h-4 text-slate-700" />
             <span>GitHub Version Control Repository</span>
           </div>
-          <p className="text-xs text-slate-400 font-mono break-all">
-            URL: <a href="https://github.com/Nadin-kishore-R/computer-network-simulator.git" target="_blank" rel="noreferrer" className="text-cyan-400 underline">https://github.com/Nadin-kishore-R/computer-network-simulator.git</a>
+          <p className="text-xs text-slate-600 font-mono break-all">
+            URL: <a href="https://github.com/Nadin-kishore-R/computer-network-simulator.git" target="_blank" rel="noreferrer" className="text-cyan-700 underline font-semibold">https://github.com/Nadin-kishore-R/computer-network-simulator.git</a>
           </p>
           <div className="text-[11px] text-slate-500 font-mono">
-            Branch: <span className="text-emerald-400 font-bold">main</span> | Owner: <span className="text-slate-300">Nadin-kishore-R</span>
+            Branch: <span className="text-emerald-700 font-bold">main</span> | Owner: <span className="text-slate-800 font-medium">Nadin-kishore-R</span>
           </div>
         </div>
       </div>
 
       {/* Requirements Checklist */}
-      <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-4">
-        <h2 className="text-base font-bold text-white flex items-center gap-2">
-          <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+      <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-4">
+        <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+          <CheckCircle2 className="w-5 h-5 text-emerald-600" />
           <span>Curriculum Requirements Compliance Checklist (100% Completed)</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-          {/* Unit III */}
-          <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-            <div className="text-cyan-400 font-bold uppercase text-[11px]">Unit III — Trees</div>
-            <ul className="space-y-1.5 text-slate-300 text-[11px] font-sans">
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> General Tree (Network Hierarchy)</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Add/Remove child, height, depth, count</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Preorder, postorder, level-order traversals</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Binary Search Tree (Device Registry)</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> BST 3-case deletion & range queries</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Min, max, successor, predecessor</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> AVL Tree (LL, RR, LR, RL Rotations)</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Balance factor (|BF| ≤ 1) and height audits</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Expression Tree (Bandwidth Calculator)</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Inorder, preorder, postorder & evaluation</li>
+          {/* Hierarchy & Directories */}
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <div className="text-cyan-800 font-bold uppercase text-[11px]">Hierarchy & Directory Architecture</div>
+            <ul className="space-y-1.5 text-slate-700 text-[11px] font-sans">
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> General Tree (Network Hierarchy)</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Add/Remove child, height, depth, count</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Preorder, postorder, level-order traversals</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Device Registry (Binary Search Tree)</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> 3-case deletion & range queries</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Min, max, successor, predecessor</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Balanced IP Registry (LL, RR, LR, RL Rotations)</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Balance factor (|BF| ≤ 1) and height audits</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Expression Tree (Bandwidth Calculator)</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Inorder, preorder, postorder & evaluation</li>
             </ul>
           </div>
 
-          {/* Unit IV */}
-          <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-            <div className="text-blue-400 font-bold uppercase text-[11px]">Unit IV — Graphs</div>
-            <ul className="space-y-1.5 text-slate-300 text-[11px] font-sans">
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Graph ADT (Matrix & List representations)</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Directed, Undirected, Weighted, Unweighted</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Dynamic vertex/edge additions & updates</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Breadth-First Search (Hop distances)</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Depth-First Search (Recursive & Iterative)</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Edge classification (Tree, Back, Forward, Cross)</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Discovery & finishing timestamps (d/f)</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Dijkstra Shortest Path with Min-Heap</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Negative weight check & path reconstruction</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Prim & Kruskal MST with DSU cycle rejection</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Connected components & Tarjan's SCC</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Topological sort (Kahn & DFS) & cycle detection</li>
+          {/* Topology & Routing */}
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <div className="text-blue-800 font-bold uppercase text-[11px]">Topology & Routing Architecture</div>
+            <ul className="space-y-1.5 text-slate-700 text-[11px] font-sans">
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Graph ADT (Matrix & List representations)</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Directed, Undirected, Weighted, Unweighted</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Dynamic vertex/edge additions & updates</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Breadth-First Search (Hop distances)</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Depth-First Search (Recursive & Iterative)</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Edge classification (Tree, Back, Forward, Cross)</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Discovery & finishing timestamps (d/f)</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Dijkstra Shortest Path with Min-Heap</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Negative weight check & path reconstruction</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Prim & Kruskal MST with cycle rejection</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Connected components & Tarjan's SCC</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Topological sort (Kahn & DFS) & cycle detection</li>
             </ul>
           </div>
 
-          {/* Unit V */}
-          <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-            <div className="text-yellow-400 font-bold uppercase text-[11px]">Unit V — Algorithm Analysis</div>
-            <ul className="space-y-1.5 text-slate-300 text-[11px] font-sans">
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> BFS vs. Dijkstra with divergent topology</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Prim vs. Kruskal comparative matrix</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> BST vs. AVL height & worst-case analysis</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Benchmarking laboratory (1k, 5k, 20k trees)</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Benchmarking laboratory (200, 1k, 2k graphs)</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Measured runtime via performance.now()</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Reproducible seeds using SeededRandom LCG</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Asymptotic definitions: O, Ω, and Θ</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Recurrence relations & Master Theorem</li>
-              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Amortized analysis of DSU α(n)</li>
+          {/* Performance & Benchmarking */}
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <div className="text-amber-800 font-bold uppercase text-[11px]">Performance & Benchmarking Analysis</div>
+            <ul className="space-y-1.5 text-slate-700 text-[11px] font-sans">
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> BFS vs. Dijkstra with divergent topology</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Prim vs. Kruskal comparative matrix</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Registry lookup height & worst-case analysis</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Benchmarking laboratory (1k, 5k, 20k trees)</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Benchmarking laboratory (200, 1k, 2k graphs)</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Measured runtime via performance.now()</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Reproducible seeds using SeededRandom LCG</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Asymptotic definitions: O, Ω, and Θ</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Recurrence relations & Master Theorem</li>
+              <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> Amortized analysis of DSU α(n)</li>
             </ul>
           </div>
         </div>
       </div>
 
       {/* Architecture & Folder Structure */}
-      <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3 font-mono text-xs">
-        <h2 className="text-sm font-bold text-white font-sans flex items-center gap-2">
-          <Code2 className="w-4 h-4 text-cyan-400" />
+      <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3 font-mono text-xs">
+        <h2 className="text-sm font-bold text-slate-900 font-sans flex items-center gap-2">
+          <Code2 className="w-4 h-4 text-cyan-700" />
           <span>Production Folder Structure</span>
         </h2>
-        <pre className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 overflow-x-auto text-[11px] leading-relaxed">
+        <pre className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 overflow-x-auto text-[11px] leading-relaxed">
 {`computer-network-simulator/
 ├── public/                 # Favicons and web assets
 ├── src/
@@ -138,7 +138,7 @@ export const DocumentationPage: React.FC = () => {
 │   │   ├── prim.ts         # Prim MST Algorithm
 │   │   ├── components.ts   # Connected Components & Tarjan SCC
 │   │   └── topologicalSort.ts # Kahn & DFS Topological Ordering
-│   ├── analysis/           # Unit V Performance & Benchmarking
+│   ├── analysis/           # Performance & Benchmarking Analysis
 │   │   ├── comparisons.ts  # Comparative Studies & Divergent Network
 │   │   ├── benchmarking.ts # Live timing benchmarks (performance.now)
 │   │   └── complexity.ts   # Theoretical Complexity Master Matrix
@@ -169,10 +169,10 @@ export const DocumentationPage: React.FC = () => {
       </div>
 
       {/* Project Team */}
-      <div className="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-        <h2 className="text-sm font-bold text-white">Project Engineering Team</h2>
-        <div className="text-xs text-slate-300 font-mono">
-          Developer & Architect: <span className="text-cyan-400 font-bold">Nadin Kishore R</span>
+      <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-2">
+        <h2 className="text-sm font-bold text-slate-900">Project Engineering Team</h2>
+        <div className="text-xs text-slate-700 font-mono">
+          Developer & Architect: <span className="text-cyan-800 font-bold">Nadin Kishore R</span>
         </div>
       </div>
     </div>

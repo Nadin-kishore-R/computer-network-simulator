@@ -3,7 +3,7 @@ import { useNetwork } from '../context/NetworkContext';
 import { GraphVisualizer } from '../components/GraphVisualizer';
 import { Graph } from '../algorithms/graph';
 import { GraphVertex } from '../types/graph';
-import { Share2, Plus, Trash2, Edit3, Grid, List, RefreshCw, AlertCircle } from 'lucide-react';
+import { Share2, Plus, Trash2, Edit3, Grid, List, AlertCircle } from 'lucide-react';
 
 export const GraphBuilderPage: React.FC = () => {
   const { graph, setGraph, triggerUpdate, logOperation } = useNetwork();
@@ -35,13 +35,13 @@ export const GraphBuilderPage: React.FC = () => {
   const handleToggleDirected = (directed: boolean) => {
     graph.setIsDirected(directed);
     triggerUpdate();
-    logOperation('Graph', 'Toggled Graph Type', `Graph converted to ${directed ? 'Directed' : 'Undirected'}.`);
+    logOperation('Topology', 'Toggled Topology Type', `Topology converted to ${directed ? 'Directed' : 'Undirected'}.`);
   };
 
   const handleToggleWeighted = (weighted: boolean) => {
     graph.setIsWeighted(weighted);
     triggerUpdate();
-    logOperation('Graph', 'Toggled Metric Type', `Graph set to ${weighted ? 'Weighted' : 'Unweighted'}.`);
+    logOperation('Topology', 'Toggled Metric Type', `Topology set to ${weighted ? 'Weighted' : 'Unweighted'}.`);
   };
 
   const handleAddVertex = (e: React.FormEvent) => {
@@ -59,7 +59,7 @@ export const GraphBuilderPage: React.FC = () => {
         y: Math.floor(100 + Math.random() * 300),
       });
       triggerUpdate();
-      logOperation('Graph', 'Added Vertex', `Added device node "${newVertexId}".`);
+      logOperation('Topology', 'Added Vertex', `Added device node "${newVertexId}".`);
       setNewVertexId('');
       setNewVertexLabel('');
       setNewVertexIp('');
@@ -73,7 +73,7 @@ export const GraphBuilderPage: React.FC = () => {
     const removed = graph.removeVertex(id);
     if (removed) {
       triggerUpdate();
-      logOperation('Graph', 'Removed Vertex', `Removed node "${id}" and incident links.`);
+      logOperation('Topology', 'Removed Vertex', `Removed node "${id}" and incident links.`);
     }
   };
 
@@ -93,7 +93,7 @@ export const GraphBuilderPage: React.FC = () => {
         weight: isNaN(wt) ? 1 : wt,
       });
       triggerUpdate();
-      logOperation('Graph', 'Added Edge', `Linked "${edgeSource}" -> "${edgeTarget}" (weight: ${wt}).`);
+      logOperation('Topology', 'Added Edge', `Linked "${edgeSource}" -> "${edgeTarget}" (weight: ${wt}).`);
       setEdgeSource('');
       setEdgeTarget('');
     } catch (err: unknown) {
@@ -109,7 +109,7 @@ export const GraphBuilderPage: React.FC = () => {
     const ok = graph.updateEdgeWeight(selectedEdgeId, wt);
     if (ok) {
       triggerUpdate();
-      logOperation('Graph', 'Updated Weight', `Updated link "${selectedEdgeId}" weight to ${wt}.`);
+      logOperation('Topology', 'Updated Weight', `Updated link "${selectedEdgeId}" weight to ${wt}.`);
       setSelectedEdgeId('');
       setUpdateWeightValue('');
     }
@@ -124,7 +124,7 @@ export const GraphBuilderPage: React.FC = () => {
       setGraph(Graph.createSampleCyclicGraph());
     }
     triggerUpdate();
-    logOperation('Graph', 'Loaded Preset', `Loaded template: ${preset.toUpperCase()}`);
+    logOperation('Topology', 'Loaded Preset', `Loaded template: ${preset.toUpperCase()}`);
   };
 
   const { vertexOrder, matrix } = graph.getAdjacencyMatrix();
@@ -133,26 +133,26 @@ export const GraphBuilderPage: React.FC = () => {
   return (
     <div className="space-y-6 p-6 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
         <div>
-          <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono">
-            <Share2 className="w-4 h-4" />
-            <span>UNIT IV — GRAPHS</span>
+          <div className="flex items-center gap-2 text-emerald-700 text-xs font-semibold uppercase tracking-wider">
+            <Share2 className="w-4 h-4 text-emerald-600" />
+            <span>Network Topology Architecture</span>
           </div>
-          <h1 className="text-2xl font-bold text-white mt-1">Network Topology Graph Builder</h1>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Complete Graph ADT supporting directed/undirected, weighted/unweighted graphs with dynamic modifications.
+          <h1 className="text-2xl font-bold text-slate-900 mt-1">Network Topology Graph Builder</h1>
+          <p className="text-xs text-slate-500 mt-0.5">
+            Network topology architecture supporting directed/undirected, weighted/unweighted links with dynamic topology modifications.
           </p>
         </div>
 
         {/* Configuration Toggles */}
         <div className="flex flex-wrap items-center gap-2">
           {/* Directed / Undirected */}
-          <div className="flex rounded-lg bg-slate-900 p-1 border border-slate-800 text-xs font-mono">
+          <div className="flex rounded-lg bg-slate-100 p-1 border border-slate-200 text-xs font-mono">
             <button
               onClick={() => handleToggleDirected(false)}
               className={`px-3 py-1 rounded-md transition-all ${
-                !isDirected ? 'bg-cyan-950 text-cyan-400 font-bold border border-cyan-800' : 'text-slate-400'
+                !isDirected ? 'bg-white text-cyan-800 font-bold border border-cyan-200 shadow-xs' : 'text-slate-600'
               }`}
             >
               Undirected
@@ -160,7 +160,7 @@ export const GraphBuilderPage: React.FC = () => {
             <button
               onClick={() => handleToggleDirected(true)}
               className={`px-3 py-1 rounded-md transition-all ${
-                isDirected ? 'bg-cyan-950 text-cyan-400 font-bold border border-cyan-800' : 'text-slate-400'
+                isDirected ? 'bg-white text-cyan-800 font-bold border border-cyan-200 shadow-xs' : 'text-slate-600'
               }`}
             >
               Directed
@@ -168,11 +168,11 @@ export const GraphBuilderPage: React.FC = () => {
           </div>
 
           {/* Weighted / Unweighted */}
-          <div className="flex rounded-lg bg-slate-900 p-1 border border-slate-800 text-xs font-mono">
+          <div className="flex rounded-lg bg-slate-100 p-1 border border-slate-200 text-xs font-mono">
             <button
               onClick={() => handleToggleWeighted(true)}
               className={`px-3 py-1 rounded-md transition-all ${
-                isWeighted ? 'bg-blue-950 text-blue-400 font-bold border border-blue-800' : 'text-slate-400'
+                isWeighted ? 'bg-white text-blue-800 font-bold border border-blue-200 shadow-xs' : 'text-slate-600'
               }`}
             >
               Weighted
@@ -180,7 +180,7 @@ export const GraphBuilderPage: React.FC = () => {
             <button
               onClick={() => handleToggleWeighted(false)}
               className={`px-3 py-1 rounded-md transition-all ${
-                !isWeighted ? 'bg-blue-950 text-blue-400 font-bold border border-blue-800' : 'text-slate-400'
+                !isWeighted ? 'bg-white text-blue-800 font-bold border border-blue-200 shadow-xs' : 'text-slate-600'
               }`}
             >
               Unweighted
@@ -190,24 +190,24 @@ export const GraphBuilderPage: React.FC = () => {
       </div>
 
       {/* Preset Network Templates */}
-      <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
-        <span className="font-semibold text-slate-300">Preset Academic Topologies:</span>
+      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs shadow-xs">
+        <span className="font-semibold text-slate-700">Preset Network Topologies:</span>
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => loadPreset('enterprise')}
-            className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-cyan-500 text-cyan-300 font-mono transition-colors"
+            className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-cyan-400 text-cyan-800 font-mono shadow-xs transition-colors"
           >
             14-Node Enterprise (Default)
           </button>
           <button
             onClick={() => loadPreset('dag')}
-            className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-blue-500 text-blue-300 font-mono transition-colors"
+            className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-400 text-blue-800 font-mono shadow-xs transition-colors"
           >
             Acyclic DAG Pipeline
           </button>
           <button
             onClick={() => loadPreset('cyclic')}
-            className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-red-500 text-red-300 font-mono transition-colors"
+            className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-red-400 text-red-800 font-mono shadow-xs transition-colors"
           >
             Cyclic Dependency Network
           </button>
@@ -215,8 +215,8 @@ export const GraphBuilderPage: React.FC = () => {
       </div>
 
       {errorMsg && (
-        <div className="p-3 rounded-lg bg-red-950/80 border border-red-800 text-xs text-red-200 flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+        <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2 font-medium">
+          <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
           <span>{errorMsg}</span>
         </div>
       )}
@@ -224,11 +224,11 @@ export const GraphBuilderPage: React.FC = () => {
       {/* Visualization / Matrix / List Mode Tabs */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <div className="flex rounded-lg bg-slate-900 p-1 border border-slate-800 text-xs">
+          <div className="flex rounded-lg bg-slate-100 p-1 border border-slate-200 text-xs">
             <button
               onClick={() => setActiveTab('visual')}
               className={`px-4 py-1.5 rounded-md flex items-center gap-2 font-medium transition-all ${
-                activeTab === 'visual' ? 'bg-slate-800 text-cyan-400 font-bold shadow' : 'text-slate-400 hover:text-white'
+                activeTab === 'visual' ? 'bg-white text-cyan-800 font-bold shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <Share2 className="w-3.5 h-3.5" />
@@ -237,7 +237,7 @@ export const GraphBuilderPage: React.FC = () => {
             <button
               onClick={() => setActiveTab('matrix')}
               className={`px-4 py-1.5 rounded-md flex items-center gap-2 font-medium transition-all ${
-                activeTab === 'matrix' ? 'bg-slate-800 text-cyan-400 font-bold shadow' : 'text-slate-400 hover:text-white'
+                activeTab === 'matrix' ? 'bg-white text-cyan-800 font-bold shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <Grid className="w-3.5 h-3.5" />
@@ -246,7 +246,7 @@ export const GraphBuilderPage: React.FC = () => {
             <button
               onClick={() => setActiveTab('list')}
               className={`px-4 py-1.5 rounded-md flex items-center gap-2 font-medium transition-all ${
-                activeTab === 'list' ? 'bg-slate-800 text-cyan-400 font-bold shadow' : 'text-slate-400 hover:text-white'
+                activeTab === 'list' ? 'bg-white text-cyan-800 font-bold shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <List className="w-3.5 h-3.5" />
@@ -271,16 +271,16 @@ export const GraphBuilderPage: React.FC = () => {
 
         {/* Tab 2: Adjacency Matrix */}
         {activeTab === 'matrix' && (
-          <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 overflow-x-auto shadow-inner">
-            <h3 className="text-xs font-bold text-slate-300 font-mono mb-3">
+          <div className="p-4 rounded-xl bg-white border border-slate-200 overflow-x-auto shadow-xs">
+            <h3 className="text-xs font-bold text-slate-800 font-mono mb-3">
               Adjacency Matrix (Size {vertexOrder.length} × {vertexOrder.length})
             </h3>
             <table className="text-xs font-mono text-center border-collapse">
               <thead>
                 <tr>
-                  <th className="p-2 border border-slate-800 bg-slate-900 text-slate-500">v / u</th>
+                  <th className="p-2 border border-slate-200 bg-slate-50 text-slate-500">v / u</th>
                   {vertexOrder.map((v) => (
-                    <th key={v} className="p-2 border border-slate-800 bg-slate-900 text-cyan-400 font-semibold">
+                    <th key={v} className="p-2 border border-slate-200 bg-slate-50 text-cyan-800 font-semibold">
                       {v}
                     </th>
                   ))}
@@ -289,18 +289,18 @@ export const GraphBuilderPage: React.FC = () => {
               <tbody>
                 {matrix.map((row, i) => (
                   <tr key={vertexOrder[i]}>
-                    <td className="p-2 border border-slate-800 bg-slate-900 text-cyan-400 font-semibold">
+                    <td className="p-2 border border-slate-200 bg-slate-50 text-cyan-800 font-semibold">
                       {vertexOrder[i]}
                     </td>
                     {row.map((val, j) => (
                       <td
                         key={j}
-                        className={`p-2 border border-slate-800 ${
+                        className={`p-2 border border-slate-200 ${
                           val === null
-                            ? 'text-slate-700 bg-slate-950'
+                            ? 'text-slate-300 bg-white'
                             : val === 0
-                            ? 'text-slate-500 bg-slate-900/50'
-                            : 'text-emerald-400 font-bold bg-emerald-950/20'
+                            ? 'text-slate-400 bg-slate-50/50'
+                            : 'text-emerald-700 font-bold bg-emerald-50'
                         }`}
                       >
                         {val === null ? '—' : val}
@@ -315,23 +315,23 @@ export const GraphBuilderPage: React.FC = () => {
 
         {/* Tab 3: Adjacency List */}
         {activeTab === 'list' && (
-          <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2 font-mono text-xs">
-            <h3 className="text-xs font-bold text-slate-300 font-sans mb-3">
+          <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2 font-mono text-xs shadow-xs">
+            <h3 className="text-xs font-bold text-slate-800 font-sans mb-3">
               Adjacency List Mapping:
             </h3>
             <div className="space-y-2">
               {Object.entries(listMap).map(([u, neighbors]) => (
-                <div key={u} className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 flex items-center gap-3">
-                  <span className="font-bold text-cyan-400 shrink-0 w-24">[{u}]:</span>
+                <div key={u} className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center gap-3">
+                  <span className="font-bold text-cyan-800 shrink-0 w-24">[{u}]:</span>
                   <div className="flex flex-wrap gap-2">
                     {neighbors.length > 0 ? (
                       neighbors.map((n, idx) => (
-                        <span key={idx} className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-slate-200">
-                          → {n.target} <span className="text-emerald-400 font-semibold">({n.weight})</span>
+                        <span key={idx} className="px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-800 shadow-xs">
+                          → {n.target} <span className="text-emerald-700 font-semibold">({n.weight})</span>
                         </span>
                       ))
                     ) : (
-                      <span className="text-slate-600 italic">No outgoing neighbors (isolated / sink)</span>
+                      <span className="text-slate-400 italic">No outgoing neighbors (isolated / sink)</span>
                     )}
                   </div>
                 </div>
@@ -344,29 +344,29 @@ export const GraphBuilderPage: React.FC = () => {
       {/* Editing Controls Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* 1. Add Vertex */}
-        <div className="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
-          <h2 className="text-sm font-bold text-white flex items-center gap-2">
-            <Plus className="w-4 h-4 text-cyan-400" />
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-3">
+          <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <Plus className="w-4 h-4 text-cyan-600" />
             <span>Add Vertex (Node)</span>
           </h2>
           <form onSubmit={handleAddVertex} className="space-y-2 text-xs">
             <div>
-              <label className="block text-slate-400 mb-0.5">Vertex ID</label>
+              <label className="block text-slate-700 font-medium mb-0.5">Vertex ID</label>
               <input
                 type="text"
                 value={newVertexId}
                 onChange={(e) => setNewVertexId(e.target.value)}
                 placeholder="e.g. Router-Edge"
-                className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-white font-mono focus:border-cyan-500 outline-none"
+                className="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-800 font-mono focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none"
                 required
               />
             </div>
             <div>
-              <label className="block text-slate-400 mb-0.5">Device Type</label>
+              <label className="block text-slate-700 font-medium mb-0.5">Device Type</label>
               <select
                 value={newVertexType}
                 onChange={(e) => setNewVertexType(e.target.value as GraphVertex['type'])}
-                className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-white focus:border-cyan-500 outline-none"
+                className="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-800 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none"
               >
                 <option value="router">Router</option>
                 <option value="switch">Switch</option>
@@ -377,38 +377,38 @@ export const GraphBuilderPage: React.FC = () => {
               </select>
             </div>
             <div>
-              <label className="block text-slate-400 mb-0.5">IP Address (Optional)</label>
+              <label className="block text-slate-700 font-medium mb-0.5">IP Address (Optional)</label>
               <input
                 type="text"
                 value={newVertexIp}
                 onChange={(e) => setNewVertexIp(e.target.value)}
                 placeholder="e.g. 10.0.5.1"
-                className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-white font-mono focus:border-cyan-500 outline-none"
+                className="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-800 font-mono focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none"
               />
             </div>
             <button
               type="submit"
-              className="w-full py-2.5 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold flex items-center justify-center gap-1.5 shadow-md shadow-cyan-500/20 transition-all mt-2"
+              className="w-full py-2.5 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold flex items-center justify-center gap-1.5 shadow-sm transition-all mt-2"
             >
               <Plus className="w-4 h-4" />
-              <span>Add Vertex to Graph</span>
+              <span>Add Vertex to Topology</span>
             </button>
           </form>
         </div>
 
         {/* 2. Add Edge */}
-        <div className="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
-          <h2 className="text-sm font-bold text-white flex items-center gap-2">
-            <Share2 className="w-4 h-4 text-blue-400" />
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-3">
+          <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <Share2 className="w-4 h-4 text-blue-600" />
             <span>Add Edge (Link)</span>
           </h2>
           <form onSubmit={handleAddEdge} className="space-y-2 text-xs">
             <div>
-              <label className="block text-slate-400 mb-0.5">Source Vertex</label>
+              <label className="block text-slate-700 font-medium mb-0.5">Source Vertex</label>
               <select
                 value={edgeSource}
                 onChange={(e) => setEdgeSource(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-white font-mono focus:border-cyan-500 outline-none"
+                className="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-800 font-mono focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none"
                 required
               >
                 <option value="">Select source</option>
@@ -420,11 +420,11 @@ export const GraphBuilderPage: React.FC = () => {
               </select>
             </div>
             <div>
-              <label className="block text-slate-400 mb-0.5">Target Vertex</label>
+              <label className="block text-slate-700 font-medium mb-0.5">Target Vertex</label>
               <select
                 value={edgeTarget}
                 onChange={(e) => setEdgeTarget(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-white font-mono focus:border-cyan-500 outline-none"
+                className="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-800 font-mono focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none"
                 required
               >
                 <option value="">Select target</option>
@@ -436,18 +436,18 @@ export const GraphBuilderPage: React.FC = () => {
               </select>
             </div>
             <div>
-              <label className="block text-slate-400 mb-0.5">Link Metric / Weight (Latency ms)</label>
+              <label className="block text-slate-700 font-medium mb-0.5">Link Metric / Weight (Latency ms)</label>
               <input
                 type="number"
                 value={edgeWeight}
                 onChange={(e) => setEdgeWeight(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-white font-mono focus:border-cyan-500 outline-none"
+                className="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-800 font-mono focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none"
                 required
               />
             </div>
             <button
               type="submit"
-              className="w-full py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 text-white font-semibold flex items-center justify-center gap-1.5 shadow-md shadow-blue-500/20 transition-all mt-2"
+              className="w-full py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white font-semibold flex items-center justify-center gap-1.5 shadow-sm transition-all mt-2"
             >
               <Plus className="w-4 h-4" />
               <span>Connect Link</span>
@@ -456,17 +456,17 @@ export const GraphBuilderPage: React.FC = () => {
         </div>
 
         {/* 3. Manage Vertices & Update Weight */}
-        <div className="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-4 text-xs">
+        <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-4 text-xs">
           <div className="space-y-2">
-            <h2 className="text-sm font-bold text-white flex items-center gap-2">
-              <Edit3 className="w-4 h-4 text-amber-400" />
+            <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <Edit3 className="w-4 h-4 text-amber-600" />
               <span>Update Link Weight</span>
             </h2>
             <div className="flex gap-2">
               <select
                 value={selectedEdgeId}
                 onChange={(e) => setSelectedEdgeId(e.target.value)}
-                className="flex-1 px-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-white font-mono focus:border-cyan-500 outline-none"
+                className="flex-1 px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-800 font-mono focus:border-cyan-500 outline-none"
               >
                 <option value="">Select link</option>
                 {edges.map((e) => (
@@ -480,28 +480,28 @@ export const GraphBuilderPage: React.FC = () => {
                 value={updateWeightValue}
                 onChange={(e) => setUpdateWeightValue(e.target.value)}
                 placeholder="New wt"
-                className="w-20 px-2 py-2 rounded-lg bg-slate-950 border border-slate-800 font-mono text-white text-xs outline-none"
+                className="w-20 px-2 py-2 rounded-lg bg-white border border-slate-300 font-mono text-slate-800 text-xs outline-none"
               />
             </div>
             <button
               onClick={handleUpdateEdgeWeight}
-              className="w-full py-2 rounded-lg bg-amber-950 hover:bg-amber-900 border border-amber-800 text-amber-300 font-semibold transition-colors"
+              className="w-full py-2 rounded-lg bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-800 font-semibold transition-colors"
             >
               Update Weight
             </button>
           </div>
 
-          <div className="space-y-2 pt-2 border-t border-slate-800">
-            <span className="text-slate-400 font-semibold block">Quick Remove Vertex:</span>
+          <div className="space-y-2 pt-2 border-t border-slate-200">
+            <span className="text-slate-600 font-semibold block">Quick Remove Vertex:</span>
             <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto">
               {vertices.map((v) => (
                 <button
                   key={v.id}
                   onClick={() => handleRemoveVertex(v.id)}
-                  className="px-2 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 hover:text-red-400 hover:border-red-800 flex items-center gap-1 text-[11px] font-mono transition-colors"
+                  className="px-2 py-1 rounded bg-slate-50 border border-slate-200 text-slate-700 hover:text-red-700 hover:border-red-300 flex items-center gap-1 text-[11px] font-mono transition-colors"
                 >
                   <span>{v.id}</span>
-                  <Trash2 className="w-3 h-3 text-red-400" />
+                  <Trash2 className="w-3 h-3 text-red-600" />
                 </button>
               ))}
             </div>

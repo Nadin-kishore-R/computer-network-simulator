@@ -163,7 +163,7 @@ export class AlgorithmComparisons {
           explanation: 'Prim maintains 1 growing tree component; Kruskal merges a forest of independent trees.',
         },
         {
-          attribute: 'Core Data Structures',
+          attribute: 'Underlying Architecture',
           itemA: 'Priority Queue / Min-Heap of vertices and adjacent cut-edges.',
           itemB: 'Sorted Edge Array + Disjoint Set Union (DSU) with Path Compression and Union by Rank.',
           explanation: 'DSU enables nearly O(1) cycle detection for Kruskal.',

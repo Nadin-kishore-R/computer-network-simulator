@@ -1,5 +1,5 @@
 /**
- * Disjoint Set Union (DSU) / Union-Find Data Structure
+ * Disjoint Set Union (DSU) / Partition Set
  * Featuring:
  * 1. Path Compression (amortized nearly O(1) finds via α(n))
  * 2. Union by Rank / Size

@@ -73,14 +73,14 @@ export const TraversalsPage: React.FC = () => {
   return (
     <div className="space-y-6 p-6 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
         <div>
-          <div className="flex items-center gap-2 text-sky-400 text-xs font-mono">
-            <Compass className="w-4 h-4" />
-            <span>UNIT IV — GRAPHS</span>
+          <div className="flex items-center gap-2 text-sky-700 text-xs font-semibold uppercase tracking-wider">
+            <Compass className="w-4 h-4 text-sky-600" />
+            <span>Network Exploration Architecture</span>
           </div>
-          <h1 className="text-2xl font-bold text-white mt-1">Network Traversal — BFS and DFS</h1>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <h1 className="text-2xl font-bold text-slate-900 mt-1">Network Traversal & Hop Analysis</h1>
+          <p className="text-xs text-slate-500 mt-0.5">
             Hop-distance discovery via Breadth-First Search and edge classification/timestamps via Depth-First Search.
           </p>
         </div>
@@ -90,7 +90,7 @@ export const TraversalsPage: React.FC = () => {
           <select
             value={startVertex}
             onChange={(e) => setStartVertex(e.target.value)}
-            className="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-xs text-white font-mono focus:border-cyan-500 outline-none"
+            className="px-3.5 py-2 rounded-lg bg-white border border-slate-300 text-xs text-slate-800 font-mono focus:border-cyan-500 outline-none shadow-xs"
           >
             {vertices.map((v) => (
               <option key={v.id} value={v.id}>
@@ -101,7 +101,7 @@ export const TraversalsPage: React.FC = () => {
 
           <button
             onClick={handleRun}
-            className="px-5 py-2 rounded-lg bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white font-semibold flex items-center gap-2 shadow-lg shadow-sky-500/20 text-xs"
+            className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-semibold flex items-center gap-2 shadow-sm text-xs transition-all"
           >
             <Play className="w-4 h-4 fill-current" />
             <span>Execute Traversal</span>
@@ -110,14 +110,14 @@ export const TraversalsPage: React.FC = () => {
       </div>
 
       {/* Mode Selector Tabs */}
-      <div className="flex rounded-xl bg-slate-900 p-1 border border-slate-800 text-xs font-semibold">
+      <div className="flex rounded-xl bg-slate-100 p-1 border border-slate-200 text-xs font-semibold">
         <button
           onClick={() => {
             setMode('bfs');
             if (!bfsResult) handleRun();
           }}
           className={`flex-1 py-2 rounded-lg transition-all ${
-            mode === 'bfs' ? 'bg-sky-950 text-sky-300 font-bold border border-sky-800' : 'text-slate-400 hover:text-white'
+            mode === 'bfs' ? 'bg-white text-sky-800 font-bold border border-sky-200 shadow-xs' : 'text-slate-600 hover:text-slate-900'
           }`}
         >
           Breadth-First Search (Hop Distance)
@@ -128,7 +128,7 @@ export const TraversalsPage: React.FC = () => {
             if (!dfsResult) handleRun();
           }}
           className={`flex-1 py-2 rounded-lg transition-all ${
-            mode === 'dfs-recursive' ? 'bg-sky-950 text-sky-300 font-bold border border-sky-800' : 'text-slate-400 hover:text-white'
+            mode === 'dfs-recursive' ? 'bg-white text-sky-800 font-bold border border-sky-200 shadow-xs' : 'text-slate-600 hover:text-slate-900'
           }`}
         >
           Depth-First Search (Recursive + Edge Classification)
@@ -139,7 +139,7 @@ export const TraversalsPage: React.FC = () => {
             if (!dfsResult) handleRun();
           }}
           className={`flex-1 py-2 rounded-lg transition-all ${
-            mode === 'dfs-iterative' ? 'bg-sky-950 text-sky-300 font-bold border border-sky-800' : 'text-slate-400 hover:text-white'
+            mode === 'dfs-iterative' ? 'bg-white text-sky-800 font-bold border border-sky-200 shadow-xs' : 'text-slate-600 hover:text-slate-900'
           }`}
         >
           Depth-First Search (Iterative Call Stack)
@@ -147,20 +147,20 @@ export const TraversalsPage: React.FC = () => {
       </div>
 
       {errorMsg && (
-        <div className="p-3 rounded-lg bg-red-950/80 border border-red-800 text-xs text-red-200">
+        <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700 font-medium">
           {errorMsg}
         </div>
       )}
 
       {/* Visual Canvas */}
       <div className="space-y-1">
-        <div className="flex justify-between text-xs text-slate-400 px-1">
+        <div className="flex justify-between text-xs text-slate-500 px-1">
           <span>
             {mode === 'bfs'
               ? 'BFS Active Frontier (Tags show hop distance from source):'
               : 'DFS Traversal Frontier (Tags show Discovery / Finishing timestamps d/f):'}
           </span>
-          <span className="text-sky-400 font-mono">Root Source: {startVertex}</span>
+          <span className="text-sky-800 font-mono font-semibold">Root Source: {startVertex}</span>
         </div>
         <GraphVisualizer
           vertices={vertices}
@@ -177,27 +177,27 @@ export const TraversalsPage: React.FC = () => {
       {mode === 'bfs' && bfsResult && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 font-mono text-xs">
           {/* Summary */}
-          <div className="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
-            <h2 className="text-sm font-bold text-white font-sans flex items-center gap-2">
-              <Layers className="w-4 h-4 text-sky-400" />
+          <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-3">
+            <h2 className="text-sm font-bold text-slate-900 font-sans flex items-center gap-2">
+              <Layers className="w-4 h-4 text-sky-600" />
               <span>BFS Traversal Statistics</span>
             </h2>
-            <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 space-y-1.5">
+            <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 space-y-1.5">
               <div className="flex justify-between">
-                <span className="text-slate-400">Reachable Vertices:</span>
-                <span className="text-emerald-400 font-bold">{bfsResult.reachableCount}</span>
+                <span className="text-slate-500">Reachable Vertices:</span>
+                <span className="text-emerald-700 font-bold">{bfsResult.reachableCount}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Unreachable:</span>
-                <span className="text-amber-400 font-bold">{bfsResult.unreachableVertices.length}</span>
+                <span className="text-slate-500">Unreachable:</span>
+                <span className="text-amber-700 font-bold">{bfsResult.unreachableVertices.length}</span>
               </div>
             </div>
 
             <div className="space-y-1">
-              <span className="text-slate-400 font-bold text-[11px] uppercase">Traversal Sequence:</span>
+              <span className="text-slate-700 font-bold text-[11px] uppercase">Traversal Sequence:</span>
               <div className="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto">
                 {bfsResult.traversalOrder.map((id, idx) => (
-                  <span key={id} className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-sky-300">
+                  <span key={id} className="px-2 py-0.5 rounded bg-slate-50 border border-slate-200 text-sky-800 font-semibold shadow-xs">
                     {idx + 1}. {id}
                   </span>
                 ))}
@@ -205,43 +205,43 @@ export const TraversalsPage: React.FC = () => {
             </div>
 
             {bfsResult.unreachableVertices.length > 0 && (
-              <div className="p-2.5 rounded-lg bg-amber-950/40 border border-amber-800/60 text-amber-200 text-[11px] font-sans">
-                <strong>Disconnected Island Detected: </strong>
+              <div className="p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-sans">
+                <strong>Disconnected Subnet Detected: </strong>
                 Vertices [{bfsResult.unreachableVertices.join(', ')}] have no path from {startVertex}.
               </div>
             )}
           </div>
 
           {/* Hop Distance Table */}
-          <div className="lg:col-span-2 p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
-            <h2 className="text-sm font-bold text-white font-sans flex items-center gap-2">
-              <GitCommit className="w-4 h-4 text-cyan-400" />
-              <span>Hop Distance Table & Breadth-First Tree Parents</span>
+          <div className="lg:col-span-2 p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-3">
+            <h2 className="text-sm font-bold text-slate-900 font-sans flex items-center gap-2">
+              <GitCommit className="w-4 h-4 text-cyan-600" />
+              <span>Hop Distance Table & Breadth-First Parents</span>
             </h2>
             <div className="overflow-x-auto max-h-60">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="border-b border-slate-800 text-slate-400 text-[11px]">
-                    <th className="py-2 px-3">Vertex</th>
-                    <th className="py-2 px-3">Hop Count</th>
-                    <th className="py-2 px-3">Parent in BFS Tree</th>
-                    <th className="py-2 px-3">Status</th>
+                  <tr className="border-b border-slate-200 text-slate-500 text-[11px] bg-slate-50">
+                    <th className="py-2.5 px-3">Vertex</th>
+                    <th className="py-2.5 px-3">Hop Count</th>
+                    <th className="py-2.5 px-3">Parent in BFS Tree</th>
+                    <th className="py-2.5 px-3">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60">
+                <tbody className="divide-y divide-slate-100">
                   {vertices.map((v) => {
                     const dist = bfsResult.distances[v.id];
                     const parent = bfsResult.parents[v.id];
                     const isReached = dist !== Infinity;
                     return (
-                      <tr key={v.id} className="hover:bg-slate-950/50">
-                        <td className="py-2 px-3 text-white font-bold">{v.id}</td>
-                        <td className="py-2 px-3 text-cyan-400">{isReached ? `${dist} hops` : '∞ (Unreachable)'}</td>
-                        <td className="py-2 px-3 text-slate-300">{parent || (v.id === startVertex ? 'ROOT' : '—')}</td>
-                        <td className="py-2 px-3">
+                      <tr key={v.id} className="hover:bg-slate-50/70">
+                        <td className="py-2.5 px-3 text-slate-900 font-bold">{v.id}</td>
+                        <td className="py-2.5 px-3 text-cyan-800 font-semibold">{isReached ? `${dist} hops` : '∞ (Unreachable)'}</td>
+                        <td className="py-2.5 px-3 text-slate-600">{parent || (v.id === startVertex ? 'ROOT' : '—')}</td>
+                        <td className="py-2.5 px-3">
                           <span
-                            className={`px-2 py-0.5 rounded text-[10px] ${
-                              isReached ? 'bg-emerald-950 text-emerald-400' : 'bg-red-950 text-red-400'
+                            className={`px-2 py-0.5 rounded text-[10px] font-semibold ${
+                              isReached ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-red-50 text-red-700 border border-red-200'
                             }`}
                           >
                             {isReached ? 'REACHED' : 'UNREACHED'}
@@ -261,16 +261,16 @@ export const TraversalsPage: React.FC = () => {
       {mode !== 'bfs' && dfsResult && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 font-mono text-xs">
           {/* Timestamps Card */}
-          <div className="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
-            <h2 className="text-sm font-bold text-white font-sans flex items-center gap-2">
-              <Clock className="w-4 h-4 text-amber-400" />
+          <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-3">
+            <h2 className="text-sm font-bold text-slate-900 font-sans flex items-center gap-2">
+              <Clock className="w-4 h-4 text-amber-600" />
               <span>Discovery & Finishing Times (d/f)</span>
             </h2>
             <div className="overflow-y-auto max-h-64 space-y-1">
               {vertices.map((v) => (
-                <div key={v.id} className="p-2 rounded bg-slate-950 border border-slate-800 flex justify-between">
-                  <span className="text-slate-300 font-bold">{v.id}:</span>
-                  <span className="text-amber-400">
+                <div key={v.id} className="p-2 rounded bg-slate-50 border border-slate-200 flex justify-between">
+                  <span className="text-slate-800 font-bold">{v.id}:</span>
+                  <span className="text-amber-800 font-semibold">
                     d={dfsResult.discoveryTimes[v.id] || '—'} / f={dfsResult.finishingTimes[v.id] || '—'}
                   </span>
                 </div>
@@ -278,50 +278,50 @@ export const TraversalsPage: React.FC = () => {
             </div>
 
             {dfsResult.hasCycle && (
-              <div className="p-2.5 rounded-lg bg-red-950/60 border border-red-800 text-red-200 text-[11px] font-sans flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
+              <div className="p-2.5 rounded-lg bg-red-50 border border-red-200 text-red-700 text-[11px] font-sans flex items-center gap-2 font-medium">
+                <AlertTriangle className="w-4 h-4 text-red-600 shrink-0" />
                 <span>Cycle detected! Back-edge encountered during traversal.</span>
               </div>
             )}
           </div>
 
           {/* Edge Classifications */}
-          <div className="lg:col-span-2 p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
-            <h2 className="text-sm font-bold text-white font-sans flex items-center gap-2">
-              <Layers className="w-4 h-4 text-cyan-400" />
+          <div className="lg:col-span-2 p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-3">
+            <h2 className="text-sm font-bold text-slate-900 font-sans flex items-center gap-2">
+              <Layers className="w-4 h-4 text-cyan-600" />
               <span>DFS Edge Classification (Tree, Back, Forward, Cross)</span>
             </h2>
             <div className="overflow-x-auto max-h-64">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="border-b border-slate-800 text-slate-400 text-[11px]">
-                    <th className="py-2 px-3">Edge (u → v)</th>
-                    <th className="py-2 px-3">Classification</th>
-                    <th className="py-2 px-3">Theoretical Meaning</th>
+                  <tr className="border-b border-slate-200 text-slate-500 text-[11px] bg-slate-50">
+                    <th className="py-2.5 px-3">Edge (u → v)</th>
+                    <th className="py-2.5 px-3">Classification</th>
+                    <th className="py-2.5 px-3">Theoretical Meaning</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60">
+                <tbody className="divide-y divide-slate-100">
                   {dfsResult.classifiedEdges.map((ce, idx) => (
-                    <tr key={idx} className="hover:bg-slate-950/50">
-                      <td className="py-2 px-3 text-cyan-300 font-bold">
+                    <tr key={idx} className="hover:bg-slate-50/70">
+                      <td className="py-2.5 px-3 text-cyan-800 font-bold">
                         {ce.edge.source} → {ce.edge.target}
                       </td>
-                      <td className="py-2 px-3">
+                      <td className="py-2.5 px-3">
                         <span
                           className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
                             ce.type === 'tree'
-                              ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
+                              ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                               : ce.type === 'back'
-                              ? 'bg-red-950 text-red-400 border border-red-800'
+                              ? 'bg-red-50 text-red-700 border border-red-200'
                               : ce.type === 'forward'
-                              ? 'bg-blue-950 text-blue-400 border border-blue-800'
-                              : 'bg-purple-950 text-purple-400 border border-purple-800'
+                              ? 'bg-blue-50 text-blue-700 border border-blue-200'
+                              : 'bg-purple-50 text-purple-700 border border-purple-200'
                           }`}
                         >
                           {ce.type} Edge
                         </span>
                       </td>
-                      <td className="py-2 px-3 text-slate-300 text-[11px] font-sans">{ce.description}</td>
+                      <td className="py-2.5 px-3 text-slate-600 text-[11px] font-sans">{ce.description}</td>
                     </tr>
                   ))}
                 </tbody>

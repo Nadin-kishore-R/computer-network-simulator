@@ -67,7 +67,7 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
 
   if (!root || !positionedTree) {
     return (
-      <div className="flex flex-col items-center justify-center p-8 border border-dashed border-slate-700 rounded-xl bg-slate-900/40 text-slate-400">
+      <div className="flex flex-col items-center justify-center p-8 border border-dashed border-slate-300 rounded-xl bg-slate-50 text-slate-500">
         <p className="text-sm">Empty Tree Structure. Insert nodes or load default template to visualize.</p>
       </div>
     );
@@ -94,21 +94,21 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
   traverse(positionedTree);
 
   return (
-    <div className="relative w-full overflow-x-auto overflow-y-hidden border border-slate-800 rounded-xl bg-slate-950/70 p-2 shadow-inner">
-      <div className="flex items-center justify-between px-3 py-1 text-xs text-slate-400 border-b border-slate-800/80 mb-2">
-        <span>Hierarchical Canvas Layout</span>
-        <span className="text-cyan-400 font-mono">Total Nodes: {nodes.length}</span>
+    <div className="relative w-full overflow-x-auto overflow-y-hidden border border-slate-200 rounded-xl bg-white p-3 shadow-xs">
+      <div className="flex items-center justify-between px-3 py-1.5 text-xs text-slate-600 border-b border-slate-200 mb-2">
+        <span className="font-semibold text-slate-800">Hierarchical Canvas Layout</span>
+        <span className="text-cyan-700 font-mono font-medium">Total Nodes: {nodes.length}</span>
       </div>
       <svg
         width={totalWidth}
         height={height}
-        className="mx-auto block select-none"
+        className="mx-auto block select-none bg-slate-50/40 rounded-lg"
         style={{ minWidth: '100%' }}
       >
         <defs>
           <linearGradient id="linkGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#0284c7" stopOpacity="0.4" />
+            <stop offset="0%" stopColor="#0284c7" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.5" />
           </linearGradient>
           <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="3" result="blur" />
@@ -138,18 +138,22 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
           const isHighlighted = p.node.highlighted;
           const isPivot = p.node.isPivot;
 
-          let strokeColor = '#38bdf8';
-          let fillColor = '#0f172a';
+          let strokeColor = '#0284c7';
+          let fillColor = '#ffffff';
+          let textColor = '#0f172a';
 
           if (isPivot) {
-            strokeColor = '#ec4899';
-            fillColor = '#831843';
+            strokeColor = '#db2777';
+            fillColor = '#fce7f3';
+            textColor = '#831843';
           } else if (isHighlighted) {
-            strokeColor = '#22c55e';
-            fillColor = '#14532d';
+            strokeColor = '#059669';
+            fillColor = '#dcfce7';
+            textColor = '#065f46';
           } else if (isSelected) {
-            strokeColor = '#f59e0b';
-            fillColor = '#78350f';
+            strokeColor = '#d97706';
+            fillColor = '#fef3c7';
+            textColor = '#78350f';
           }
 
           return (
@@ -161,7 +165,7 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
             >
               {/* Outer Glow for Highlighted */}
               {(isHighlighted || isPivot || isSelected) && (
-                <circle r="26" fill="none" stroke={strokeColor} strokeWidth="2" opacity="0.4" filter="url(#glow)" />
+                <circle r="26" fill="none" stroke={strokeColor} strokeWidth="2.5" opacity="0.4" filter="url(#glow)" />
               )}
 
               {/* Main Node Circle */}
@@ -170,16 +174,16 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
                 fill={fillColor}
                 stroke={strokeColor}
                 strokeWidth={isSelected || isHighlighted || isPivot ? '3' : '2'}
-                className="transition-colors"
+                className="transition-colors shadow-sm"
               />
 
               {/* Label */}
               <text
                 textAnchor="middle"
                 dy="4"
-                fill="#f8fafc"
+                fill={textColor}
                 fontSize="11"
-                fontWeight="600"
+                fontWeight="700"
                 className="pointer-events-none font-mono"
               >
                 {p.node.label.length > 7 ? p.node.label.slice(0, 6) + '…' : p.node.label}
@@ -207,8 +211,9 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
                 <text
                   textAnchor="middle"
                   y="34"
-                  fill="#94a3b8"
+                  fill="#475569"
                   fontSize="10"
+                  fontWeight="500"
                   className="pointer-events-none"
                 >
                   {p.node.sublabel.length > 14 ? p.node.sublabel.slice(0, 12) + '…' : p.node.sublabel}

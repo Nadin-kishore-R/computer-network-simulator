@@ -4,7 +4,7 @@ import { BinarySearchTree } from '../trees/bst';
 import { AVLTree } from '../trees/avl';
 import { ExpressionTree } from '../trees/expressionTree';
 
-describe('Unit III — Trees: General Tree', () => {
+describe('Network Hierarchy: General Tree', () => {
   let tree: GeneralTree;
 
   beforeEach(() => {
@@ -79,7 +79,7 @@ describe('Unit III — Trees: General Tree', () => {
   });
 });
 
-describe('Unit III — Trees: Binary Search Tree (BST)', () => {
+describe('Device Registry: Binary Search Tree (BST)', () => {
   let bst: BinarySearchTree;
 
   beforeEach(() => {
@@ -155,7 +155,7 @@ describe('Unit III — Trees: Binary Search Tree (BST)', () => {
   });
 });
 
-describe('Unit III — Trees: AVL Tree', () => {
+describe('Self-Balancing IP Registry: AVL Tree', () => {
   let avl: AVLTree;
 
   beforeEach(() => {
@@ -225,7 +225,7 @@ describe('Unit III — Trees: AVL Tree', () => {
   });
 });
 
-describe('Unit III — Trees: Expression Tree', () => {
+describe('Bandwidth Formula Evaluator: Expression Tree', () => {
   let exprTree: ExpressionTree;
 
   beforeEach(() => {
